@@ -36,6 +36,39 @@ function ocuparAsiento(sala: MatrizAsientos, fila: number, columna: number): boo
   return true;
 }
 
+function buscarAsientosContiguos(sala: MatrizAsientos): {
+  encontrado: boolean;
+  fila: number;
+  columnaInicial: number;
+  columnaFinal: number;
+  mensaje: string;
+} {
+  for (let fila = 0; fila < sala.length; fila++) {
+    for (let columna = 0; columna < sala[fila].length - 1; columna++) {
+      const asientoActualLibre = sala[fila][columna] === 0;
+      const asientoSiguienteLibre = sala[fila][columna + 1] === 0;
+
+      if (asientoActualLibre && asientoSiguienteLibre) {
+        return {
+          encontrado: true,
+          fila: fila + 1,
+          columnaInicial: columna + 1,
+          columnaFinal: columna + 2,
+          mensaje: `Asientos contiguos libres: fila ${fila + 1}, columnas ${columna + 1} y ${columna + 2}.`,
+        };
+      }
+    }
+  }
+
+  return {
+    encontrado: false,
+    fila: 0,
+    columnaInicial: 0,
+    columnaFinal: 0,
+    mensaje: "No hay asientos contiguos disponibles.",
+  };
+}
+
 function mostrarSala(sala: MatrizAsientos): void {
   console.log("\n=== Estado actual de la sala ===");
   console.log("X = Ocupado | L = Libre");
@@ -66,5 +99,8 @@ ocuparAsiento(sala, 3, 4);
 ocuparAsiento(sala, 6, 8);
 
 mostrarSala(sala);
+
+const resultadoBusqueda = buscarAsientosContiguos(sala);
+console.log(`\n${resultadoBusqueda.mensaje}`);
 
 export {};
