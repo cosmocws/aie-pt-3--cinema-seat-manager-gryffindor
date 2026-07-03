@@ -13,8 +13,8 @@ assert.match(reservaDuplicada, /Reserva fallida/);
 assert.match(reservaInvalida, /fuera de rango/);
 assert.equal(ocupacionDirecta, true);
 
-const resumen = contarAsientos(sala);
-assert.equal(resumen.ocupados, 2);
-assert.equal(resumen.disponibles, 7);
+const [ocupados, disponibles] = contarAsientos(sala);
+assert.equal(ocupados, 2);
+assert.equal(disponibles, 7);
 
 console.log('Smoke test OK');
