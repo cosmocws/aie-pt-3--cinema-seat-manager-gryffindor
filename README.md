@@ -1,112 +1,84 @@
-# Hello World with Typescript
+# Gestor de Asientos de Cine
 
-<!-- hide -->
-> By [@ehiber](https://github.com/ehiber) and contributors at [4Geeks Academy](https://4geeksacademy.com/)
+Aplicacion web para gestionar reservas de asientos en una sala de cine usando TypeScript, HTML y Tailwind (Vite).
 
-[![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
-[![twitter](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=twitter)](https://twitter.com/4geeksacademy)
+## Objetivo
 
-*Estas instrucciones estan disponibles en [espanol](./README.es.md).*
-<!-- endhide -->
-Start coding a TypeScript/HTML/CSS website in 30 seconds by opening this template using 4Geeks' [One-Click Coding](https://s.4geeks.com/start?repo=https://github.com/4GeeksAcademy/typescript-hello) or locally on your computer.
+Permitir al personal del cine visualizar una sala de 8 filas x 10 columnas y cambiar el estado de cada asiento con clic.
 
-## Before you begin
+## Caracteristicas
 
-Install the packages by typing:
+- Mapa visual de asientos centrado en pantalla.
+- Estado por asiento con cambio de color e icono:
+  - Libre.
+  - Ocupado.
+- Numeracion de asientos en formato uniforme: 01, 02, 03 ... 10.
+- Reserva/liberacion individual con clic (toggle).
+- Reserva de bloque contiguo horizontal.
+- Reinicio completo de sala.
+- Resumen en tiempo real de ocupados y disponibles.
+- Estado adicional mostrado en formato JSON.
+
+## Reglas de implementacion aplicadas
+
+- Datos de asientos representados solo con arreglo bidimensional.
+- Sin clases para la logica principal.
+- Busqueda de contiguos estrictamente horizontal en una misma fila.
+- Validaciones de rango para fila y columna.
+
+## Estructura principal
+
+- index.html: estructura de la interfaz.
+- src/main.ts: logica de negocio y comportamiento UI.
+- src/style.css: carga de Tailwind.
+- public/seat-free.svg y public/seat-occupied.svg: iconos de asiento.
+
+## Requisitos
+
+- Node.js 18+
+- npm
+
+## Comandos
+
+Instalar dependencias:
 
 ```bash
 npm install
 ```
 
-## How do I run my website to see live changes?
-
-Type on the command line:
+Ejecutar en desarrollo:
 
 ```bash
-npm run start
+npm run dev
 ```
 
-Then open your local URL in the browser (usually `http://localhost:5173`).
-
-## How do I run this in GitHub Codespaces?
-
-Run the same development server:
-
-```bash
-npm run start
-```
-
-Vite is configured to listen on `0.0.0.0`, so Codespaces can detect and forward port `5173` automatically.
-
-## How do I run only the TypeScript check?
-
-Use this command to validate only TypeScript without starting Vite:
+Validar TypeScript:
 
 ```bash
 npm run typecheck
 ```
 
-## How do I run `main.ts` from the terminal?
-
-If you want to execute `./src/main.ts` directly and see `console.log` output in the terminal, run:
+Build de produccion:
 
 ```bash
-npm run console
+npm run build
 ```
 
-This command is already wired to `./src/main.ts`.
+Prueba de humo:
 
-## Where do I write my code?
-
-It depends on the language:
-
-- `./src/main.ts` for TypeScript logic.
-- `./src/style.css` for styles (Tailwind CSS v4 is already imported).
-- `./index.html` for the HTML shell.
-
-You can add more files as needed, just make sure to import them from `main.ts`.
-
-Note: if you can see the "Hello Rigo" card and the message "If you can see this, Tailwind is working.", Tailwind is configured correctly.
-
-## Troubleshooting
-
-### I don't see my changes...
-
-Every time you change any file inside `./src`, the website refreshes automatically (hot reload).
-
-If changes still don't appear, refresh clearing cache:
-
-- Mac: `Cmd + Shift + R`
-- Windows/Linux: `Ctrl + Shift + R`
-
-## How do I include more images in my project?
-
-Add them inside `./public` and reference them in HTML using `/your-image-name.ext`.
-
-Example:
-
-```html
-<img src="/rigo-baby.jpg" alt="Rigo" />
+```bash
+npm run smoke
 ```
 
-## How do I include more TypeScript files?
+## Uso
 
-Add files into `./src` and import them from `main.ts`.
+1. Abre la app en el navegador (Vite suele usar http://localhost:5173).
+2. Haz clic en un asiento para alternar entre libre y ocupado.
+3. Usa el campo de cantidad y el boton de bloque para reservar asientos contiguos.
+4. Usa Reiniciar para limpiar toda la sala.
 
-Example:
+## Estado actual de la sala
 
-```ts
-import { myVar } from "./file2";
-```
-
-## How do I publish the website?
-
-This boilerplate is compatible with Vercel in one step.
-
-<!-- hide -->
-## Contributors
-
-This template was built as part of the [4Geeks Academy Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [ehiber](https://github.com/ehiber) and contributors. Find out more about our [AI Engineering Course](https://4geeksacademy.com/us/coding-bootcamps/ai-engineering), [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
-
-You can find other templates and resources like this at the [school's GitHub page](https://github.com/4geeksacademy/).
-<!-- endhide -->
+- Filas: 1 a 8.
+- Columnas: 1 a 10.
+- Etiqueta visual de asiento: 01 a 10.

@@ -2,6 +2,7 @@
 
 ## Rol
 Desarrollador senior super experimentado.
+Disenador web senior especialista en frontend y backend.
 
 ## Objetivo del ejercicio
 Implementar un sistema de gestión de asientos de cine orientado a consola, claro para el personal del cine y técnicamente correcto.
@@ -16,6 +17,9 @@ Implementar un sistema de gestión de asientos de cine orientado a consola, clar
 6. Escribir código legible con nombres de variables y funciones significativos.
 7. Garantizar que el programa se ejecute sin errores y produzca la salida esperada.
 8. Mostrar una salida por consola clara, útil y orientada al personal del cine.
+9. No usar objetos ni clases para la logica de negocio.
+10. Representar los datos de asientos usando solo un arreglo bidimensional.
+11. En caso de necesitar estructurar datos adicionales, utilizar formato JSON.
 
 ## Reglas de implementación
 
