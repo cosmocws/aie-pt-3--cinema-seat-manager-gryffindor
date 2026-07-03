@@ -11,34 +11,63 @@
     <main class="app-shell">
       <header class="hero-panel">
         <p class="hero-kicker">Colegio Hogwarts de Magia y Hechiceria</p>
-        <h1>Gran Cine de Gryffindor</h1>
+        <h1>GRAN CINE DE GRYFFINDOR</h1>
         <p class="hero-subtitle">Reserva tu asiento en la sala mas valiente de Hogwarts.</p>
       </header>
 
-      <section class="cinema-panel">
-        <div class="screen-wrapper">
-          <div class="screen-glow"></div>
-          <div class="screen-bar"></div>
-          <p class="screen-label">Pantalla Encantada</p>
+      <section class="castle-layout">
+        <aside class="control-panel" aria-label="Panel de control Gryffindor">
+          <div class="crest-card">
+            <div class="crest-shield" aria-hidden="true">G</div>
+            <h2>Casa Gryffindor</h2>
+            <p>Valentia, coraje y nobleza en cada reserva.</p>
+          </div>
+
+          <div class="controls-row">
+            <button type="button" class="magic-button action">Reservar asiento</button>
+            <label for="cantidad" class="control-label">Bloque contiguo</label>
+            <input id="cantidad" type="number" min="1" max="10" value="2" class="magic-input" />
+            <button id="reservar-bloque" type="button" class="magic-button">Buscar 2 contiguos</button>
+            <button id="reiniciar" type="button" class="magic-button secondary">Reiniciar sala</button>
+          </div>
+
+          <p id="estado" class="status-card side-status"></p>
+          <pre id="estado-json" class="json-panel"></pre>
+        </aside>
+
+        <div class="cinema-panel">
+          <div class="screen-wrapper">
+            <div class="screen-glow"></div>
+            <div class="screen-bar"></div>
+            <p class="screen-label">Pantalla Encantada</p>
+          </div>
+
+          <div class="seat-grid-frame" aria-label="Mapa de asientos">
+            <div id="seat-grid" class="mx-auto w-fit"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bottom-panels">
+        <div class="welcome-panel">
+          <h3>Bienvenido a la Sala Gryffindor</h3>
+          <p>El coraje y la valentia son tus mejores aliados.</p>
         </div>
 
-        <div class="seat-grid-frame" aria-label="Mapa de asientos">
-          <div id="seat-grid" class="mx-auto w-fit"></div>
+        <div class="info-cards">
+          <article class="info-card">
+            <p class="info-title">Asientos ocupados y libres</p>
+            <p id="resumen" class="info-value"></p>
+          </article>
+          <article class="info-card">
+            <p class="info-title">Total de asientos</p>
+            <p class="info-value">80 asientos en la sala encantada</p>
+          </article>
+          <article class="info-card">
+            <p class="info-title">Estado del turno</p>
+            <p class="info-value">Gestion en vivo desde la torre de Gryffindor</p>
+          </article>
         </div>
-
-        <div class="status-grid">
-          <p id="resumen" class="status-card"></p>
-          <p id="estado" class="status-card"></p>
-        </div>
-
-        <div class="controls-row">
-          <label for="cantidad" class="sr-only">Cantidad</label>
-          <input id="cantidad" type="number" min="1" max="10" value="2" class="magic-input" />
-          <button id="reservar-bloque" type="button" class="magic-button">Reservar bloque</button>
-          <button id="reiniciar" type="button" class="magic-button secondary">Reiniciar sala</button>
-        </div>
-
-        <pre id="estado-json" class="json-panel"></pre>
       </section>
     </main>
     <script type="module" src="/src/main.ts"></script>
