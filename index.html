@@ -3,36 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gestor de Asientos de Cine</title>
+    <title>Gran Cine de Gryffindor</title>
+    <link rel="stylesheet" href="/src/style.css" />
   </head>
-  <body class="min-h-screen bg-[#050608] text-slate-100">
-    <main class="mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center justify-center gap-6 px-4 py-8">
-      <header class="w-full max-w-4xl rounded-2xl border border-slate-700 bg-slate-900/80 p-5 text-center">
-        <h1 class="text-2xl font-black tracking-tight text-slate-100 md:text-3xl">Reserva de Asientos</h1>
-        <p class="mt-2 text-sm text-slate-300">Haz clic en cada asiento para alternar entre libre y ocupado.</p>
+  <body>
+    <div class="magic-atmosphere" aria-hidden="true"></div>
+    <main class="app-shell">
+      <header class="hero-panel">
+        <p class="hero-kicker">Colegio Hogwarts de Magia y Hechiceria</p>
+        <h1>GRAN CINE DE GRYFFINDOR</h1>
+        <p class="hero-subtitle">Reserva tu asiento en la sala mas valiente de Hogwarts.</p>
       </header>
 
-      <section class="w-full max-w-4xl rounded-2xl border border-slate-700 bg-[#0b0d12] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.55)]">
-        <div class="mx-auto mb-4 h-4 w-[88%] rounded-full bg-gradient-to-b from-slate-200 to-slate-500 opacity-85"></div>
-        <p class="mb-5 text-center text-xs font-semibold uppercase tracking-[0.35em] text-slate-400">Pantalla</p>
+      <section class="castle-layout">
+        <aside class="control-panel" aria-label="Panel de control Gryffindor">
+          <div class="crest-card">
+            <div class="crest-shield" aria-hidden="true">G</div>
+            <h2>Casa Gryffindor</h2>
+            <p>Valentia, coraje y nobleza en cada reserva.</p>
+          </div>
 
-        <div class="overflow-x-auto pb-2">
-          <div id="seat-grid" class="mx-auto w-fit"></div>
+          <div class="controls-row">
+            <button type="button" class="magic-button action">Reservar asiento</button>
+            <label for="cantidad" class="control-label">Bloque contiguo</label>
+            <input id="cantidad" type="number" min="1" max="10" value="2" class="magic-input" />
+            <button id="reservar-bloque" type="button" class="magic-button">Buscar 2 contiguos</button>
+            <button id="reiniciar" type="button" class="magic-button secondary">Reiniciar sala</button>
+          </div>
+
+          <p id="estado" class="status-card side-status"></p>
+          <pre id="estado-json" class="json-panel"></pre>
+        </aside>
+
+        <div class="cinema-panel">
+          <div class="screen-wrapper">
+            <div class="screen-glow"></div>
+            <div class="screen-bar"></div>
+            <p class="screen-label">Pantalla Encantada</p>
+          </div>
+
+          <div class="seat-grid-frame" aria-label="Mapa de asientos">
+            <div id="seat-grid" class="mx-auto w-fit"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bottom-panels">
+        <div class="welcome-panel">
+          <h3>Bienvenido a la Sala Gryffindor</h3>
+          <p>El coraje y la valentia son tus mejores aliados.</p>
         </div>
 
-        <div class="mt-5 grid gap-3 md:grid-cols-2">
-          <p id="resumen" class="rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-200"></p>
-          <p id="estado" class="rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 text-sm text-slate-200"></p>
+        <div class="info-cards">
+          <article class="info-card">
+            <p class="info-title">Asientos ocupados y libres</p>
+            <p id="resumen" class="info-value"></p>
+          </article>
+          <article class="info-card">
+            <p class="info-title">Total de asientos</p>
+            <p class="info-value">80 asientos en la sala encantada</p>
+          </article>
+          <article class="info-card">
+            <p class="info-title">Estado del turno</p>
+            <p class="info-value">Gestion en vivo desde la torre de Gryffindor</p>
+          </article>
         </div>
-
-        <div class="mt-4 flex flex-wrap gap-2">
-          <label for="cantidad" class="sr-only">Cantidad</label>
-          <input id="cantidad" type="number" min="1" max="10" value="2" class="w-28 rounded-lg border border-slate-600 bg-slate-950 px-3 py-2 text-sm text-slate-100" />
-          <button id="reservar-bloque" type="button" class="rounded-lg bg-sky-500 px-3 py-2 text-sm font-bold text-slate-950 hover:bg-sky-400">Reservar bloque</button>
-          <button id="reiniciar" type="button" class="rounded-lg border border-slate-500 px-3 py-2 text-sm font-bold text-slate-100 hover:bg-slate-800">Reiniciar</button>
-        </div>
-
-        <pre id="estado-json" class="mt-4 overflow-x-auto rounded-lg border border-slate-700 bg-slate-950 p-3 text-xs text-slate-300"></pre>
       </section>
     </main>
     <script type="module" src="/src/main.ts"></script>
